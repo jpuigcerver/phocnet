@@ -162,7 +162,6 @@ def main():
     parser.add_argument('--word_image_lmdb_path', '-wilp', default='./word_images_lmdb')
     parser.add_argument('--phoc_lmdb_path', '-plp', default='./phoc_lmdb')
     parser.add_argument('--phoc_size', type=int, default=604)
-    parser.add_argument('--generate_deploy', action='store_true')
     args = parser.parse_args()
     if args.cnn_architecture == 'phocnet':
         print str(ModelProtoGenerator().get_phocnet(word_image_lmdb_path=args.word_image_lmdb_path,
@@ -177,3 +176,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
