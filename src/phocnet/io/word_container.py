@@ -49,14 +49,14 @@ class SimpleWordContainer(object):
 
     def del_image_path(self):
         del self.__image_path
-    
+
     def get_word_image(self, gray_scale=True):
         col_type = None
         if gray_scale:
-            col_type = cv2.CV_LOAD_IMAGE_GRAYSCALE
+            col_type = cv2.IMREAD_GRAYSCALE
         else:
-            col_type = cv2.CV_LOAD_IMAGE_COLOR
-        
+            col_type = cv2.IMREAD_COLOR
+
         # load the image
         ul = self.bounding_box['upperLeft']
         wh = self.bounding_box['widthHeight']
@@ -70,7 +70,7 @@ class SimpleWordContainer(object):
     image_path = property(get_image_path, set_image_path, del_image_path, "image_path's docstring")
 
 class DocImageWordContainer(SimpleWordContainer):
-    def __init__(self, transcription, page, bounding_box,  
+    def __init__(self, transcription, page, bounding_box,
                  id_on_page, image_path):
         super(DocImageWordContainer, self).__init__(transcription, bounding_box, image_path)
         self.__page = page
@@ -100,5 +100,4 @@ class DocImageWordContainer(SimpleWordContainer):
         del self.__id_on_page
 
     page = property(get_page, set_page, del_page, "page's docstring")
-    id_on_page = property(get_id_on_page, set_id_on_page, del_id_on_page, "id_on_page's docstring")    
-        
+    id_on_page = property(get_id_on_page, set_id_on_page, del_id_on_page, "id_on_page's docstring")
